@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pickle Business Website">
+    <title>Delicious Pickles</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #25d366;
+        }
+
+        section {
+            padding: 20px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        /* Product Layout */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 30%;
+            margin: 10px 0;
+            padding: 15px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-item h3 {
+            margin: 10px 0;
+        }
+
+        .product-item button, .quantity-btn {
+            padding: 8px 16px;
+            background-color: #25d366;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-item button:hover, .quantity-btn:hover {
+            background-color: #128c7e;
+        }
+
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-controls button {
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+
+        .quantity-controls select {
+            padding: 5px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .cart-summary {
+            margin-top: 20px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .product-item {
+                width: 45%;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                width: 100%;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Button styling */
+        .whatsapp-btn {
+            background-color: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+        }
+
+        /* Other Section Styles */
+        .recipe-list, .contact-details {
+            margin-top: 20px;
+        }
+
+        .recipe-list ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .contact-details p {
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Delicious Pickles</h1>
+    <p>Your one-stop shop for homemade, flavorful pickles!</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#products">Products</a>
+    <a href="#recipes">Recipes</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<!-- Home Section -->
+<section id="home">
+    <h2>Welcome to Delicious Pickles!</h2>
+    <p>Discover our wide range of homemade pickles, made with fresh, natural ingredients. Your taste buds will thank you!</p>
+</section>
+
+<!-- About Us Section -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>We are a family-owned pickle business, dedicated to crafting the finest pickles using traditional recipes passed down through generations. Our pickles are made with the highest quality ingredients, ensuring every jar is packed with flavor.</p>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+    <h2>Our Products</h2>
+    <div class="product-list">
+        <!-- Product Items -->
+        <div class="product-item">
+            <img src="pickle1.jpg" alt="Spicy Mango Pickle">
+            <h3>Spicy Mango Pickle</h3>
+            <p>A tangy and spicy delight for your taste buds!</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('Spicy Mango Pickle', 'decrease')">-</button>
+                <span id="Spicy Mango Pickle-quantity">0</span>
+                <button onclick="changeQuantity('Spicy Mango Pickle', 'increase')">+</button>
+                <select onchange="changeQuantitySize('Spicy Mango Pickle', this.value)">
+                    <option value="250gm">250gm</option>
+                    <option value="500gm">500gm</option>
+                </select>
+            </div>
+            <button onclick="addToCart('Spicy Mango Pickle', '250gm')">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="pickle2.jpg" alt="Sweet Lime Pickle">
+            <h3>Sweet Lime Pickle</h3>
+            <p>A sweet and tangy treat with a burst of flavor.</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('Sweet Lime Pickle', 'decrease')">-</button>
+                <span id="Sweet Lime Pickle-quantity">0</span>
+                <button onclick="changeQuantity('Sweet Lime Pickle', 'increase')">+</button>
+                <select onchange="changeQuantitySize('Sweet Lime Pickle', this.value)">
+                    <option value="250gm">250gm</option>
+                    <option value="500gm">500gm</option>
+                </select>
+            </div>
+            <button onclick="addToCart('Sweet Lime Pickle', '250gm')">Add to Cart</button>
+        </div>
+
+        <div class="product-item">
+            <img src="pickle3.jpg" alt="Garlic Pickle">
+            <h3>Garlic Pickle</h3>
+            <p>A savory pickle for garlic lovers!</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('Garlic Pickle', 'decrease')">-</button>
+                <span id="Garlic Pickle-quantity">0</span>
+                <button onclick="changeQuantity('Garlic Pickle', 'increase')">+</button>
+                <select onchange="changeQuantitySize('Garlic Pickle', this.value)">
+                    <option value="250gm">250gm</option>
+                    <option value="500gm">500gm</option>
+                </select>
+            </div>
+            <button onclick="addToCart('Garlic Pickle', '250gm')">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<!-- Recipes Section -->
+<section id="recipes">
+    <h2>Recipes & Serving Suggestions</h2>
+    <p>Here are some ideas on how you can enjoy our pickles:</p>
+    <div class="recipe-list">
+        <ul>
+            <li>Spicy Mango Pickle with grilled chicken</li>
+            <li>Sweet Lime Pickle on a toasted sandwich</li>
+            <li>Garlic Pickle with your favorite curry</li>
+            <li>Mixed pickle with naan bread</li>
+            <li>Carrot and cucumber pickle as a salad topping</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or want to place an order, feel free to reach out to us!</p>
+    <div class="contact-details">
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Email: contact@deliciouspickles.com</p>
+        <a class="whatsapp-btn" href="https://wa.me/message/YU4CX3MC4B3RG1?text=I%20want%20to%20order%20%2B%20Spicy%20Mango%20Pickle%20and%20Sweet%20Lime%20Pickle%2C%20Please%20send%20details">Contact Us on WhatsApp</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Delicious Pickles - All Rights Reserved</p>
+</footer>
+
+<script>
+    let cart = [];
+
+    // Function to change the quantity of products
+    function changeQuantity(product, action) {
+        const productElement = document.getElementById(`${product}-quantity`);
+        let currentQuantity = parseInt(productElement.innerText);
+        if (action === 'increase') {
+            currentQuantity++;
+        } else if (action === 'decrease' && currentQuantity > 0) {
+            currentQuantity--;
+        }
+        productElement.innerText = currentQuantity;
+    }
+
+    // Function to update the selected quantity size (250gm or 500gm)
+    function changeQuantitySize(product, size) {
+        const productIndex = cart.findIndex(item => item.name === product);
+        if (productIndex !== -1) {
+            cart[productIndex].size = size;
+        }
+    }
+
+    // Function to add products to the cart
+    function addToCart(product, size) {
+        const quantity = parseInt(document.getElementById(`${product}-quantity`).innerText);
+        if (quantity > 0) {
+            const existingProductIndex = cart.findIndex(item => item.name === product && item.size === size);
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += quantity;
+            } else {
+                cart.push({ name: product, size: size, quantity: quantity });
+            }
+            alert(`${quantity} x ${product} (${size}) added to cart!`);
+            updateWhatsAppLink();
+        } else {
+            alert('Please select a quantity first.');
+        }
+    }
+
+    // Function to update the WhatsApp link
+    function updateWhatsAppLink() {
+        const cartDetails = cart.map(item => `${item.quantity} x ${item.name} (${item.size})`).join('%20and%20');
+        const whatsappLink = `https://wa.me/message/YU4CX3MC4B3RG1?text=I%20want%20to%20order%20${cartDetails}%2C%20Please%20send%20details`;
+        document.querySelector('.whatsapp-btn').href = whatsappLink;
+    }
+</script>
+
+</body>
+</html>
